@@ -1,0 +1,431 @@
+2025-09-24 18:01:34.974 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "unhealthy"
+}
+2025-09-24 18:05:07.277 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Database seeding completed",
+  "success": true
+}
+2025-09-24 18:05:21.476 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:08:33.174 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:11:25.305 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:13:52.576 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:14:23.377 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:14:48.466 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:18:31.454 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 18:18:48.914 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login{}"
+}
+2025-09-24 18:18:50.450 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login{}"
+}
+2025-09-24 18:18:51.359 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/auth/register",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/register{}"
+}
+2025-09-24 18:18:53.713 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/admin/audit?limit=5",
+  "method": "GET",
+  "query": {
+    "limit": "5"
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/audit?limit=5{\"limit\":\"5\"}"
+}
+2025-09-24 18:18:56.570 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "PRIVILEGE_ESCALATION_ATTEMPT",
+  "severity": "high",
+  "userId": "560851d0-e297-4d41-adc7-301196030bb1",
+  "attemptedRole": "admin",
+  "currentRole": "user",
+  "ip": "::1",
+  "endpoint": "/api/admin/users",
+  "userAgent": "node-fetch"
+}
+2025-09-24 19:07:44.370 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 19:10:08.356 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 19:15:19.800 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login{}"
+}
+2025-09-24 19:15:58.071 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/admin/users?page=1&limit=10&search=",
+  "method": "GET",
+  "query": {
+    "page": "1",
+    "limit": "10",
+    "search": ""
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/users?page=1&limit=10&search={\"page\":\"1\",\"limit\":\"10\",\"search\":\"\"}"
+}
+2025-09-24 19:15:59.880 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/admin/users?page=1&limit=10&search=",
+  "method": "GET",
+  "query": {
+    "page": "1",
+    "limit": "10",
+    "search": ""
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/users?page=1&limit=10&search={\"page\":\"1\",\"limit\":\"10\",\"search\":\"\"}"
+}
+2025-09-24 19:16:00.240 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/admin/audit?page=1&limit=10&userId=&action=&resourceType=&startDate=&endDate=&search=",
+  "method": "GET",
+  "query": {
+    "page": "1",
+    "limit": "10",
+    "userId": "",
+    "action": "",
+    "resourceType": "",
+    "startDate": "",
+    "endDate": "",
+    "search": ""
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/audit?page=1&limit=10&userId=&action=&resourceType=&startDate=&endDate=&search={\"page\":\"1\",\"limit\":\"10\",\"userId\":\"\",\"action\":\"\",\"resourceType\":\"\",\"startDate\":\"\",\"endDate\":\"\",\"search\":\"\"}"
+}
+2025-09-24 19:16:01.445 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/admin/audit?page=1&limit=10&userId=&action=&resourceType=&startDate=&endDate=&search=",
+  "method": "GET",
+  "query": {
+    "page": "1",
+    "limit": "10",
+    "userId": "",
+    "action": "",
+    "resourceType": "",
+    "startDate": "",
+    "endDate": "",
+    "search": ""
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/audit?page=1&limit=10&userId=&action=&resourceType=&startDate=&endDate=&search={\"page\":\"1\",\"limit\":\"10\",\"userId\":\"\",\"action\":\"\",\"resourceType\":\"\",\"startDate\":\"\",\"endDate\":\"\",\"search\":\"\"}"
+}
+2025-09-24 19:16:13.862 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/admin/users?page=1&limit=10&search=",
+  "method": "GET",
+  "query": {
+    "page": "1",
+    "limit": "10",
+    "search": ""
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/users?page=1&limit=10&search={\"page\":\"1\",\"limit\":\"10\",\"search\":\"\"}"
+}
+2025-09-24 19:16:15.340 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/admin/users?page=1&limit=10&search=",
+  "method": "GET",
+  "query": {
+    "page": "1",
+    "limit": "10",
+    "search": ""
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/users?page=1&limit=10&search={\"page\":\"1\",\"limit\":\"10\",\"search\":\"\"}"
+}
+2025-09-24 19:16:52.843 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login{}"
+}
+2025-09-24 19:40:27.483 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 19:48:30.798 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 20:07:20.900 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 20:10:51.885 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 21:19:44.545 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login?"
+}
+2025-09-24 21:21:24.093 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-24 21:21:35.075 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login?"
+}
+2025-09-24 22:57:59.661 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-25 18:54:22.033 [INFO]: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+2025-09-25 18:54:34.141 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login?"
+}
+2025-09-25 18:56:15.912 [ERROR]: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "endpoint": "/api/patients",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/patients?"
+}

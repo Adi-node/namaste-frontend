@@ -1,0 +1,113 @@
+
+> namaste-backend@0.1.0 start
+> node src/server.js
+
+[dotenv@17.2.2] injecting env (25) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+🚀 Starting NAMASTE FHIR Backend...
+⚙️ Validating configuration...
+✅ Configuration validation passed
+📊 Initializing database connection...
+✅ Supabase clients initialized successfully
+🔍 Testing database connection...
+✅ Database connected successfully (625ms)
+18:18:31 [32minfo[39m: System Event
+{
+  "service": "namaste-backend",
+  "event": "Application startup",
+  "environment": "development",
+  "port": 3001,
+  "nodeVersion": "v24.8.0",
+  "databaseStatus": "healthy"
+}
+✅ Application initialized successfully
+
+🎉 NAMASTE FHIR Backend is running!
+📡 Server: http://localhost:3001
+🏥 Health Check: http://localhost:3001/health
+📚 API Info: http://localhost:3001/api
+🔐 Environment: development
+📝 Logs: ./logs/app.log
+
+🔗 Available Endpoints:
+   POST /api/auth/register - User registration
+   POST /api/auth/login - User login
+   GET  /api/auth/profile - User profile (authenticated)
+   GET  /api/admin/users - Manage users (admin only)
+   GET  /api/admin/audit - View audit logs (admin only)
+
+👤 Default Accounts:
+   Admin: admin@namaste.health / Admin123!
+   User:  user@namaste.health / User123!
+
+📖 Run database setup: npm run seed
+🎯 Ready for frontend integration!
+18:18:48 [31merror[39m: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login{}"
+}
+18:18:50 [31merror[39m: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/auth/login",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/login{}"
+}
+18:18:51 [31merror[39m: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/auth/register",
+  "method": "POST",
+  "query": {},
+  "bodyExists": true,
+  "suspiciousContent": "/api/auth/register{}"
+}
+18:18:53 [31merror[39m: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "SUSPICIOUS_REQUEST_PATTERN",
+  "severity": "high",
+  "userId": null,
+  "ip": "::1",
+  "userAgent": "node-fetch",
+  "endpoint": "/api/admin/audit?limit=5",
+  "method": "GET",
+  "query": {
+    "limit": "5"
+  },
+  "bodyExists": false,
+  "suspiciousContent": "/api/admin/audit?limit=5{\"limit\":\"5\"}"
+}
+18:18:56 [31merror[39m: SECURITY INCIDENT
+{
+  "service": "namaste-backend",
+  "incident": "PRIVILEGE_ESCALATION_ATTEMPT",
+  "severity": "high",
+  "userId": "560851d0-e297-4d41-adc7-301196030bb1",
+  "attemptedRole": "admin",
+  "currentRole": "user",
+  "ip": "::1",
+  "endpoint": "/api/admin/users",
+  "userAgent": "node-fetch"
+}

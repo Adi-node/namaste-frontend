@@ -1,0 +1,44 @@
+{
+  "name": "namaste-backend",
+  "version": "0.1.0",
+  "description": "Secure FHIR R4 terminology microservice with NAMASTE↔ICD-11 mapping, JWT auth, RBAC, and audit logging.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext js,json --exec node src/server.js",
+    "start": "node src/server.js",
+    "lint": "echo 'No linter configured'",
+    "seed": "node src/scripts/seed.js"
+  },
+  "keywords": [
+    "fhir",
+    "icd-11",
+    "namaste",
+    "ayush",
+    "supabase",
+    "express",
+    "rbac",
+    "audit"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "node-fetch": "^3.3.2",
+    "uuid": "^13.0.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

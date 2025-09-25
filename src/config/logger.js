@@ -74,13 +74,11 @@ const logger = winston.createLogger({
     ]
 });
 
-// Console transport for non-production environments
-if (config.server.env !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: consoleFormat,
-        level: config.server.env === 'development' ? 'debug' : 'info'
-    }));
-}
+// Add console transport for all environments
+logger.add(new winston.transports.Console({
+    format: consoleFormat,
+    level: config.server.env === 'development' ? 'debug' : 'info'
+}));
 
 // Separate logger for audit trails
 const auditLogger = winston.createLogger({
@@ -91,12 +89,7 @@ const auditLogger = winston.createLogger({
     ),
     defaultMeta: { type: 'audit' },
     transports: [
-        new winston.transports.File({
-            filename: config.logging.auditFile,
-            maxsize: 50 * 1024 * 1024, // 50MB for audit logs
-            maxFiles: 10,
-            tailable: true
-        })
+        new winston.transports.Console({ format: consoleFormat })
     ]
 });
 
@@ -109,11 +102,7 @@ const securityLogger = winston.createLogger({
     ),
     defaultMeta: { type: 'security' },
     transports: [
-        new winston.transports.File({
-            filename: path.join(logsDir, 'security.log'),
-            maxsize: 20 * 1024 * 1024, // 20MB
-            maxFiles: 5
-        })
+        new winston.transports.Console({ format: consoleFormat })
     ]
 });
 
@@ -126,13 +115,48 @@ const performanceLogger = winston.createLogger({
     ),
     defaultMeta: { type: 'performance' },
     transports: [
-        new winston.transports.File({
-            filename: path.join(logsDir, 'performance.log'),
-            maxsize: 10 * 1024 * 1024,
-            maxFiles: 3
-        })
+        new winston.transports.Console({ format: consoleFormat })
     ]
 });
+
+
+// Add file transports only if not in production
+if (config.server.env !== 'production') {
+    // Ensure logs directory exists for non-production environments
+    const logsDir = path.dirname(config.logging.file);
+    if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+    }
+
+    logger.add(new winston.transports.File({
+        filename: config.logging.file,
+        maxsize: 10 * 1024 * 1024, // 10MB
+        maxFiles: config.logging.maxFiles,
+        tailable: true
+    }));
+    logger.add(new winston.transports.File({
+        filename: config.logging.errorFile,
+        level: 'error',
+        maxsize: 10 * 1024 * 1024,
+        maxFiles: 5
+    }));
+    auditLogger.add(new winston.transports.File({
+        filename: config.logging.auditFile,
+        maxsize: 50 * 1024 * 1024, // 50MB for audit logs
+        maxFiles: 10,
+        tailable: true
+    }));
+    securityLogger.add(new winston.transports.File({
+        filename: path.join(logsDir, 'security.log'),
+        maxsize: 20 * 1024 * 1024, // 20MB
+        maxFiles: 5
+    }));
+    performanceLogger.add(new winston.transports.File({
+        filename: path.join(logsDir, 'performance.log'),
+        maxsize: 10 * 1024 * 1024,
+        maxFiles: 3
+    }));
+}
 
 // Helper functions for structured logging
 

@@ -3,82 +3,46 @@ import path from 'path';
 import fs from 'fs';
 import config from './config.js';
 
-// Custom format for log entries
-const logFormat = winston.format.combine(
-    winston.format.timestamp({
-        format: 'YYYY-MM-DD HH:mm:ss.SSS'
-    }),
-    winston.format.errors({ stack: true }),
-    winston.format.json(),
-    winston.format.printf(({ timestamp, level, message, stack, ...meta }) => {
-        let log = `${timestamp} [${level.toUpperCase()}]: ${message}`;
-        if (stack) {
-            log += `\n${stack}`;
-        }
-        if (Object.keys(meta).length > 0) {
-            log += `\n${JSON.stringify(meta, null, 2)}`;
-        }
-        return log;
-    })
-);
+const isProduction = config.server.env === 'production';
 
-// Console format for all environments
-const consoleFormat = winston.format.combine(
-    winston.format.colorize(),
-    winston.format.timestamp({
-        format: 'HH:mm:ss'
-    }),
-    winston.format.printf(({ timestamp, level, message, ...meta }) => {
-        let log = `${timestamp} ${level}: ${message}`;
-        if (Object.keys(meta).length > 0 && config.server.env === 'development') {
-            log += `\n${JSON.stringify(meta, null, 2)}`;
-        }
-        return log;
-    })
-);
-
-// --- Logger Initialization ---
-
+// Define a single console transport to be used by all loggers in production
 const consoleTransport = new winston.transports.Console({
-    format: consoleFormat,
-    level: config.server.env === 'development' ? 'debug' : 'info'
+    format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp({ format: 'HH:mm:ss' }),
+        winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+    )
 });
 
-const createLoggerWithOptions = (defaultMeta) => {
-    const logger = winston.createLogger({
-        level: config.logging.level,
-        format: logFormat,
-        defaultMeta: { service: 'namaste-backend', ...defaultMeta },
-        transports: [consoleTransport]
-    });
+// Function to create a logger
+const createLogger = (label) => {
+    const transports = [consoleTransport];
 
-    // Add file transports only if not in production
-    if (config.server.env !== 'production') {
-        const logsDir = path.dirname(config.logging.file);
+    // If not in production, add file transports
+    if (!isProduction) {
+        const logsDir = path.resolve(process.cwd(), 'logs');
         if (!fs.existsSync(logsDir)) {
             fs.mkdirSync(logsDir, { recursive: true });
         }
 
-        logger.add(new winston.transports.File({
-            filename: config.logging.file,
-            maxsize: 10 * 1024 * 1024,
-            maxFiles: config.logging.maxFiles,
-            tailable: true
-        }));
-        logger.add(new winston.transports.File({
-            filename: config.logging.errorFile,
-            level: 'error',
-            maxsize: 10 * 1024 * 1024,
-            maxFiles: 5
+        transports.push(new winston.transports.File({
+            filename: path.join(logsDir, `${label}.log`),
+            format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
         }));
     }
-    return logger;
+
+    return winston.createLogger({
+        level: config.logging.level,
+        format: winston.format.combine(winston.format.label({ label })),
+        transports: transports,
+    });
 };
 
-const mainLogger = createLoggerWithOptions({});
-const auditLogger = createLoggerWithOptions({ type: 'audit' });
-const securityLogger = createLoggerWithOptions({ type: 'security' });
-const performanceLogger = createLoggerWithOptions({ type: 'performance' });
+// Create the loggers
+const mainLogger = createLogger('app');
+const auditLogger = createLogger('audit');
+const securityLogger = createLogger('security');
+const performanceLogger = createLogger('performance');
 
 // --- Helper Functions ---
 
@@ -111,11 +75,19 @@ export const logRequest = (req, res, responseTime) => {
 export const logHealthCheck = (component, status, responseTime, details = {}) => mainLogger.info('Health Check', { component, status, responseTime, ...details });
 
 export const closeLoggers = () => new Promise(resolve => {
-    mainLogger.on('finish', () => auditLogger.on('finish', () => securityLogger.on('finish', () => performanceLogger.on('finish', resolve))));
-    mainLogger.end();
-    auditLogger.end();
-    securityLogger.end();
-    performanceLogger.end();
+    // In production, transports are shared, so we only need to end one.
+    if (isProduction) {
+        mainLogger.on('finish', resolve);
+        mainLogger.end();
+    } else {
+        // In dev, end all loggers
+        let count = 4;
+        const onFinish = () => { if (--count === 0) resolve(); };
+        mainLogger.on('finish', onFinish).end();
+        auditLogger.on('finish', onFinish).end();
+        securityLogger.on('finish', onFinish).end();
+        performanceLogger.on('finish', onFinish).end();
+    }
 });
 
 export {
